@@ -5,39 +5,57 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TicTacToe</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="main.js"></script>
+    <script defer src="JS/main.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="flex-ctr">TIC-TAC-TOE</header>
-    <main class="flex-ctr">
-        <div class="board">
-            <div class="spot flex-ctr">0</div>
-            <div class="spot flex-ctr">1</div>
-            <div class="spot flex-ctr">2</div>
-            <div class="spot flex-ctr">3</div>
-            <div class="spot flex-ctr">4</div>
-            <div class="spot flex-ctr">5</div>
-            <div class="spot flex-ctr">6</div>
-            <div class="spot flex-ctr">7</div>
-            <div class="spot flex-ctr">8</div>
+    <div id="intro-page" class="flex-ctr">
+        <h1>Welcome to Tic-Tac-Toe</h1>
+        <div class="player-num">
+            <button id="one-player">ONE PLAYER</button>
+            <button id="two-player">TWO PLAYERS</button>
         </div>
-        <div class="player-names">
-            <div>Player 1:</div>
-            <div>Player 2:</div>
+        <div id="single-player" class="hide-content">
+            <input class="player1" type="text" value="" placeholder="Enter Player Name">
+            <button id="submit-player-name" type="button" name="submit-player-name">SUBMIT</button>
         </div>
-        <div class="player-scores">
-            <div>0</div>
-            <div>0</div>
+        <div id="multi-player" class="hide-content">
+            <input class="player2" type="text" value="" placeholder="Enter Player One Name">
+            <input class="player3" type="text" value="" placeholder="Enter Player Two Name">
+            <button id="submit-player-names" type="button" name="submit-player-names">SUBMIT</button>
         </div>
-        <div>
-            <button class="reset">RESET</button>
-        </div>
-        
-    </main>
-    <Footer>Created by Tosin</Footer>
+    </div>
+    <div class="main-content hide-content">
+        <header class="flex-ctr">TIC-TAC-TOE</header>
+        <main class="flex-ctr">
+            <div class="board">
+                <div class="spot flex-ctr">0</div>
+                <div class="spot flex-ctr">1</div>
+                <div class="spot flex-ctr">2</div>
+                <div class="spot flex-ctr">3</div>
+                <div class="spot flex-ctr">4</div>
+                <div class="spot flex-ctr">5</div>
+                <div class="spot flex-ctr">6</div>
+                <div class="spot flex-ctr">7</div>
+                <div class="spot flex-ctr">8</div>
+            </div>
+            <div class="player-names">
+                <div class="disp-player1">Player 1:</div>
+                <div class="disp-player2">Player 2:</div>
+            </div>
+            <div class="player-scores">
+                <div>0</div>
+                <div>0</div>
+            </div>
+            <div>
+                <button class="reset">RESET</button>
+            </div>
+            
+        </main>
+        <Footer>Created by Tosin</Footer>
+    </div>
 </body>
 </html>
