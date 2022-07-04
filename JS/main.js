@@ -12,8 +12,12 @@ const mainContent = document.querySelector('.main-content');
 const displayPlayerName1 = document.querySelector('.disp-player1');
 const displayPlayerName2 = document.querySelector('.disp-player2');
 const boardSpots = document.querySelectorAll('.spot');
+let spotIndex = [];
+let introButton = null;
+let currentSpot = null;
+let playerTurn = 1
 
-
+// console.log(boardSpots)
 
 class Player {
     constructor(name, score, lastChoice, choices){
@@ -30,6 +34,8 @@ const playerTwo = new Player('', 2, null, []);
 
 const computer = new Player('Big Mac', 3, null, []);
 
+
+
 const winCombos = [
     [0,1,2], 
     [0,3,6], 
@@ -42,7 +48,7 @@ const winCombos = [
 ]
 
 
-const enterPlayerNames = (evt)=> {
+const inputPlayerNames = (evt)=> {
     if(evt.target.id === 'one-player'){
         singlePlayer.classList.remove('hide-content');
         singlePlayer.classList.add('flex-ctr');
@@ -53,11 +59,11 @@ const enterPlayerNames = (evt)=> {
         playerNum.classList.add('hide-content');
     }
 }
-const renderPlayerNames = (evt) => {
-    if(evt.target.id === 'submit-player-name'){
+const renderPlayerNames = () => {
+    if(introButton.id === 'submit-player-name'){
         displayPlayerName1.innerHTML = playerOne.name;
         displayPlayerName2.innerHTML = computer.name;
-    }else if(evt.target.id === 'submit-player-names'){
+    }else if(introButton.id === 'submit-player-names'){
         displayPlayerName1.innerHTML = playerOne.name;
         displayPlayerName2.innerHTML = playerTwo.name;
     }
@@ -80,29 +86,55 @@ const renderBoard = () =>{
 // }
 
 const renderMainPage = (evt) => {
-
+    introButton = evt.target
     renderBoard();
-    if(evt.target.id === 'submit-player-name'){
+    if(introButton.id === 'submit-player-name'){
         playerOne.name = playerName1.value;
-    }else if(evt.target.id === 'submit-player-names'){
+    }else if(introButton.id === 'submit-player-names'){
         playerOne.name = playerName2.value;
         playerTwo.name = playerName3.value;
     }
-    renderPlayerNames(evt);
+    renderPlayerNames();
 
     //RENDER SCORES NOT USEFUL HERE
     // renderScores(evt)
-
-    // console.log(playerOne);
-    // console.log(playerTwo);
-    // console.log(computer);
 }
 
+const Turn = ()=>{
+    if(playerTurn === 1){
+        playerOne.choices.push(currentSpot.innerHTML)
+        // console.log('PlayerOneChoices', playerOne.choices)
+        currentSpot.classList.remove('hide-spot-text')
+        currentSpot.innerHTML = 'X';
+        playerTurn = -1
+    }else if(playerTurn === -1){
+        playerTwo.choices.push(currentSpot.innerHTML)
+        // console.log('PlayerTwoChoices', playerTwo.choices)
+        currentSpot.classList.remove('hide-spot-text')
+        currentSpot.innerHTML = 'O';
+        playerTurn = 1
+    }
+}
+
+//WORK ON BOARD CLICK LISTENER
+const handleBoardClick = (evt) => {
+    currentSpot = evt.target;
+    if(currentSpot.disabled === false){
+        Turn();
+        currentSpot.disabled = true;    
+    } else if(currentSpot.disabled === true){
+        console.log('disabled')
+    }
+}
 
 //Single or Multiplayer?
-playerNum.addEventListener('click', enterPlayerNames)
+playerNum.addEventListener('click', inputPlayerNames);
 
+submitPlayerName.addEventListener('click', renderMainPage);
 
-submitPlayerName.addEventListener('click', renderMainPage)
+submitPlayerNames.addEventListener('click', renderMainPage);
 
-submitPlayerNames.addEventListener('click', renderMainPage)
+boardSpots.forEach((boardSpot) => {
+    boardSpot.disabled = false
+    boardSpot.addEventListener('click', handleBoardClick);
+});

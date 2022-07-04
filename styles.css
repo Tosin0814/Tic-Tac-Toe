@@ -98,6 +98,10 @@ footer{
     background-color: aqua;
 }
 
+.hide-spot-text{
+    color: white;
+}
+
 .player-names > div{
     display: inline-block;
     padding-top: 20px;
