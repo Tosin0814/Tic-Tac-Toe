@@ -101,6 +101,9 @@ footer{
 .hide-spot-text{
     color: white;
 }
+.hide-spot-text:hover{
+    color: aqua;
+}
 
 .player-names > div{
     display: inline-block;
@@ -109,11 +112,16 @@ footer{
     /* color: purple; */
 }
 
+.win{
+    margin-top: 10px;
+    background-color: greenyellow;
+}
+
 .player-scores > div{
     display: inline-block;
     padding-top: 5px;
     margin: 0 10px;
-    background-color: greenyellow;
+    /* background-color: greenyellow; */
 }
 
 .reset{
