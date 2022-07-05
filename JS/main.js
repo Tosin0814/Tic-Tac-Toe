@@ -51,14 +51,25 @@ const winCombos = [
 
 
 
-const startNameColor = () => {
+const playerOneTurn = () => {
     displayPlayerName1.style.backgroundColor = 'lightgreen'
     displayPlayerName2.style.backgroundColor = ''
+    displayPlayerName1.innerHTML = `${playerOne.name}'s Turn`
+    displayPlayerName2.innerHTML = playerTwo.name
 }
 
-const clearNameColor = () => {
+const playerTwoTurn = () => {
+    displayPlayerName1.style.backgroundColor = ''
+    displayPlayerName2.style.backgroundColor = 'lightgreen'
+    displayPlayerName1.innerHTML = playerOne.name
+    displayPlayerName2.innerHTML = `${playerTwo.name}'s Turn`
+}
+
+const resetNameAndColor = () => {
     displayPlayerName1.style.backgroundColor = ''
     displayPlayerName2.style.backgroundColor = ''
+    displayPlayerName1.innerHTML = playerOne.name
+    displayPlayerName2.innerHTML = playerTwo.name
 }
 
 const inputPlayerNames = (evt)=> {
@@ -74,10 +85,10 @@ const inputPlayerNames = (evt)=> {
 }
 const renderPlayerNames = () => {
     if(introButton.id === 'submit-player-name-single'){
-        displayPlayerName1.innerHTML = playerOne.name;
+        playerOneTurn()
         displayPlayerName2.innerHTML = computer.name;
     }else if(introButton.id === 'submit-player-name-multi'){
-        displayPlayerName1.innerHTML = playerOne.name;
+        playerOneTurn()
         displayPlayerName2.innerHTML = playerTwo.name;
     }
 }
@@ -85,7 +96,7 @@ const renderBoard = () =>{
     introPage.classList.add('hide-content');
     introPage.classList.remove('flex-ctr');
     mainContent.classList.remove('hide-content');
-    startNameColor()
+    playerOneTurn()
 }
 
 const renderMainPage = (evt) => {
@@ -110,13 +121,13 @@ const checkWin = () => {
             if(playerOne.choices.includes(winCombo[0]) && 
             playerOne.choices.includes(winCombo[1]) && 
             playerOne.choices.includes(winCombo[2])){
-                winMessage.innerHTML = `${playerOne.name} WINS!!!`;
+                winMessage.innerHTML = `${playerOne.name} WINS!`;
                 playerOne.score++
                 playerScores[0].innerHTML = playerOne.score;
                 boardSpots.forEach((boardSpot) => {
                     boardSpot.disabled = true
                 });
-                clearNameColor()
+                resetNameAndColor()
             }
         });
     }else if(playerTurn === 1){
@@ -124,13 +135,13 @@ const checkWin = () => {
             if(playerTwo.choices.includes(winCombo[0]) && 
             playerTwo.choices.includes(winCombo[1]) && 
             playerTwo.choices.includes(winCombo[2])){
-                winMessage.innerHTML = `${playerTwo.name} WINS!!!`;
+                winMessage.innerHTML = `${playerTwo.name} WINS!`;
                 playerTwo.score++
                 playerScores[1].innerHTML = playerTwo.score;
                 boardSpots.forEach((boardSpot) => {
                     boardSpot.disabled = true
                 });
-                clearNameColor()
+                resetNameAndColor()
             }
         });
     }
@@ -143,15 +154,14 @@ const Turn = ()=>{
         // console.log('PlayerOneChoices', playerOne.choices)
         currentSpot.classList.remove('hide-spot-text')
         currentSpot.innerHTML = 'X';
-        displayPlayerName1.style.backgroundColor = ''
-        displayPlayerName2.style.backgroundColor = 'lightgreen'
+        playerTwoTurn();
         playerTurn = -1
     }else if(playerTurn === -1){
         playerTwo.choices.push(currentSpot.innerHTML)
         // console.log('PlayerTwoChoices', playerTwo.choices)
         currentSpot.classList.remove('hide-spot-text')
         currentSpot.innerHTML = 'O';
-        startNameColor()
+        playerOneTurn()
         playerTurn = 1
     }
     checkWin()
@@ -180,7 +190,7 @@ const clearBoard = () => {
     playerTwo.choices = [];
     winMessage.innerHTML = '';
     playerTurn = 1;
-    startNameColor()
+    playerOneTurn()
 }
 
 

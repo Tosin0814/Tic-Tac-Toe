@@ -72,6 +72,7 @@ footer{
 }
 
 .board{
+    font-family: 'Quicksand', sans-serif;
     background-color: gray;
     display: grid;
     grid-template-columns: repeat(3, 100px);
@@ -83,7 +84,7 @@ footer{
     align-items: center;
     justify-items: center;
     border: 5px solid black;
-    border-radius: 5px;
+    border-radius: 8px;
 }
 .spot{
     font-size: 80px;
@@ -107,21 +108,29 @@ footer{
 
 .player-names > div{
     display: inline-block;
-    padding-top: 20px;
-    margin: 0 10px;
+    width: 100px;
+    text-align: center;
+    padding: 10px;
+    margin: 0 30px;
+    border: 1px solid black;
+    border-radius: 5px;
     /* color: purple; */
 }
 
 .win{
-    margin-top: 10px;
+    font-size: 20px;
+    margin: 10px 0;
     background-color: greenyellow;
 }
 
 .player-scores > div{
     display: inline-block;
-    padding-top: 5px;
-    margin: 0 10px;
-    /* background-color: greenyellow; */
+    width: 100px;
+    text-align: center;
+    padding: 5px;
+    margin: 0 30px;
+    border-radius: 5px;
+    background-color: gainsboro;
 }
 
 .reset{
