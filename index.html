@@ -12,20 +12,13 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="intro-page" class="flex-ctr">
+    <div class="intro-page flex-ctr">
         <h1>Welcome to Tic-Tac-Toe</h1>
-        <div class="player-num">
-            <button id="one-player">ONE PLAYER</button>
-            <button id="two-player">TWO PLAYERS</button>
-        </div>
-        <div id="single-player" class="hide-content">
-            <input class="player1" type="text" value="" placeholder="Enter Player Name">
-            <button id="submit-player-name-single" type="button" name="submit-player-name">SUBMIT</button>
-        </div>
-        <div id="multi-player" class="hide-content">
-            <input class="player2" type="text" value="" placeholder="Enter Player One Name">
-            <input class="player3" type="text" value="" placeholder="Enter Player Two Name">
-            <button id="submit-player-name-multi" type="button" name="submit-player-names">SUBMIT</button>
+        <button class="start">CLICK TO START</button>
+        <div class="player-names hide-content">
+            <input class="player1" type="text" value="" placeholder="Enter Player One Name">
+            <input class="player2" type="text" value="" placeholder="Enter Player Two Name">
+            <button class="submit-player-name" type="button" name="submit-player-names">SUBMIT</button>
         </div>
     </div>
     <div class="main-content hide-content">
