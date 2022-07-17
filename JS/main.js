@@ -88,8 +88,16 @@ const renderBoard = () =>{
 const renderMainPage = (evt) => {
     introButton = evt.target
     renderBoard();
-    playerOne.name = playerName1.value;
-    playerTwo.name = playerName2.value;
+    if (playerName1.value === '') {
+        playerOne.name = 'Stranger One'
+    } else {
+        playerOne.name = playerName1.value;
+    }
+    if (playerName2.value === '') {
+        playerTwo.name = 'Stranger Two'
+    } else {
+        playerTwo.name = playerName2.value;
+    }
     playerOneTurn()
 }
 
