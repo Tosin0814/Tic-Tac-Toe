@@ -1,6 +1,6 @@
 const introPage = document.querySelector('.intro-page');
 const start = document.querySelector('.start');
-const playerNames = document.querySelector('.player-names');
+const playerNames = document.querySelector('.player-names-input');
 const playerName1 = document.querySelector('.player1');
 const playerName2 = document.querySelector('.player2');
 const submitPlayerNames = document.querySelector('.submit-player-name');

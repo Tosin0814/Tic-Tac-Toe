@@ -16,23 +16,26 @@ body{
     font-family: 'Poiret One', cursive;
     font-size: 100px;
     font-weight: bold;
+    text-align: center;
     text-shadow: 2px 2px 3px black;
+    padding: 20px;
+    margin: 10px;
 }
 
 .start{
     width: 250px;
     height: 125px;
-    background-color: gainsboro;
-    border: 5px solid rgb(0,0,255);
+    background-color: rgba(0,0,255, 0.6);
+    border: 2.5px solid rgba(0,0,255, 0.8);
     border-radius: 20px;
     font-size: 30px;
 }
 
 .start:hover{
-    background-color: rgba(0,0,255, 0.6);
+    background-color: rgba(0,0,255, 0.8);
 }
 
-.player-names > input{
+.player-names-input > input{
     width: 250px;
     height: 50px;
     margin-bottom: 10px;
@@ -42,17 +45,13 @@ body{
     background-color: white;
 }
 
-.player-names > button{
+.player-names-input > button{
     width: 150px;
     height: 50px;
-    background-color: gainsboro;
-    border: 2.5px solid rgb(0,0,255);
+    background-color: rgba(0,0,255, 0.6);
+    border: 2.5px solid rgba(0,0,255, 0.8);
     border-radius: 10px;
     font-size: 20px;
-}
-
-.player-names > button:hover{
-    background-color: rgba(0,0,255, 0.6);
 }
 
 .main-content{
@@ -61,7 +60,7 @@ body{
     font-family: Helvetica;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 100px 6fr 50px;
+    grid-template-rows: 100px 1fr 40px;
     grid-template-areas: 
         "hdr"
         "main"
@@ -84,6 +83,7 @@ header{
 main{
     grid-area: main;
     background-color: rgb(0,191,255);
+    padding-top: 50px;
 }
 
 footer{
@@ -93,6 +93,7 @@ footer{
     grid-area: ftr;
     background-color: rgba(0,0,255, 1); 
     text-align: right;
+    padding-right: 10px;
     font-family: 'Poiret One', cursive;
     font-weight: bold;
     font-size: 30px;
@@ -110,22 +111,18 @@ footer{
     font-family: 'Quicksand', sans-serif;
     background-color: gray;
     display: grid;
-    grid-template-columns: repeat(3, 100px);
-    grid-template-rows: repeat(3, 100px);
-    grid-template-areas: 
-        "hdr"
-        "main"
-        "ftr";
+    grid-template-columns: repeat(3, 120px);
+    grid-template-rows: repeat(3, 120px);
     align-items: center;
     justify-items: center;
     border: 5px solid black;
     border-radius: 8px;
 }
 .spot{
-    font-size: 80px;
+    font-size: 120px;
     font-weight: 900;
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    height: 100%;
     border: 2px solid black;
     background-color: white;
     cursor: pointer;
@@ -141,25 +138,25 @@ footer{
     color: aqua;
 }
 
+.player-names{
+    display: flex;
+    flex-direction: row;
+}
+
 .player-names > div{
-    display: inline-block;
     width: 200px;
     text-align: center;
     padding: 10px;
-    margin: 0 30px;
+    margin: 20px 30px 0 30px;
     border: 1px solid black;
     border-radius: 5px;
-    /* color: purple; */
 }
 
-.win{
-    font-size: 20px;
-    margin: 10px 0;
-    background-color: greenyellow;
+.player-scores{
+    display: flex;
 }
 
 .player-scores > div{
-    display: inline-block;
     width: 200px;
     text-align: center;
     padding: 5px;
@@ -168,6 +165,89 @@ footer{
     background-color: gainsboro;
 }
 
+.win{
+    font-size: 20px;
+    margin: 10px 0;
+    background-color: greenyellow;
+    border: 1px solid black;
+}
+
 .reset{
     margin: 50px;
+    text-align: center;
+}
+
+
+@media only screen and (max-width: 425px) {
+    .intro-page > h1{
+        margin: 5px;
+        padding: 10px;
+        font-size: 60px;
+    }
+
+    .start{
+        width: 150px;
+        height: 50px;
+        border-radius: 10px;
+        font-size: 15px;
+    }
+
+    .player-names-input > input{
+        width: 200px;
+        height: 50px;
+        margin-bottom: 10px;
+        font-size: 16px;
+        border-radius: 15px;
+    }
+    
+    .player-names-input > button{
+        width: 150px;
+        height: 50px;
+        border-radius: 10px;
+        font-size: 15px;
+    }
+
+    .main-content{
+        grid-template-columns:1fr;
+        grid-template-rows: 80px 1fr 30px;
+    }
+
+    .board{
+        display: grid;
+        grid-template-columns: repeat(3, 100px);
+        grid-template-rows: repeat(3, 100px);
+    }
+
+    .spot{
+        font-size: 80px;
+        font-weight: 900;
+        width: 100%;
+        height: 100%;
+        border: 2px solid black;
+        background-color: white;
+        cursor: pointer;
+    }
+
+    header{
+        font-size: 55px;
+    }
+    
+    .player-names > div{
+        width: 100px;
+        font-size: 12px;
+        padding: 5px;
+        margin: 10px 15px 0 15px;
+        border: 1px solid black;
+        border-radius: 3px;
+    }
+    .player-scores > div{
+        width: 100px;
+        padding: 2px;
+        margin: 0 15px;
+        border-radius: 3px;
+        background-color: gainsboro;
+    }
+    footer{
+        font-size: 15px;
+    }
 }
