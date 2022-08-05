@@ -55,7 +55,7 @@ body{
     font-size: 20px;
 }
 
-.player-names-input:hover{
+.player-names-input > button:hover{
     background-color: rgba(0,0,255, 0.8);
 }
 
@@ -174,7 +174,6 @@ footer{
     font-size: 20px;
     margin: 10px 0;
     background-color: greenyellow;
-    border: 1px solid black;
 }
 
 .reset{
